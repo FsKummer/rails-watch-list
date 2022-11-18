@@ -1,12 +1,20 @@
-<h1><%= @list.name %></h1>
-<p>List info:</p>
-<%= link_to 'Create a new bookmark', new_list_bookmark_path(@list)  %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <h1><%= @list.name %></h1>
+</div>
 <hr>
-<ul>
+<%= link_to 'Insert new movie', new_list_bookmark_path(@list), class: 'btn btn-dark m-3'  %>
+<div class="cards">
   <% @list.movies.each do |movie| %>
-    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-    <li><%= movie.title %>  <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are sure you?"} do %>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <div class="card-product">
+      <%= image_tag movie.poster_url, style: 'background: cover' %>
+      <div class="card-product-infos">
+        <h2><%= movie.title %></h2>
+        <p> Comment: <strong><%= bookmark.comment %></strong></p>
+        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are sure you?"} do %>
           <i class="fa-regular fa-trash-can"></i>
-        <% end %></li>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
