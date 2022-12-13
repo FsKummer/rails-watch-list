@@ -11,7 +11,7 @@
       <div class="card-product-infos">
         <h2><%= movie.title %></h2>
         <p> Comment: <strong><%= bookmark.comment %></strong></p>
-        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are sure you?"} do %>
+        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Tem certeza que quer sair?"} do %>
           <i class="fa-regular fa-trash-can"></i>
         <% end %>
       </div>
